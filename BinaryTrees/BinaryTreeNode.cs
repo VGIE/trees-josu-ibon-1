@@ -12,7 +12,8 @@ namespace BinaryTrees
         public BinaryTreeNode(TKey key, TValue value)
         {
             //TODO #1: Initialize member variables/attributes
-            
+            Key = key;
+            Value = value;
         }
 
         public string ToString(int depth)
@@ -43,7 +44,34 @@ namespace BinaryTrees
             //              b) Else, we should ask the LeftChild to add it recursively
             //          -If the current node has a lower key that the new node (use CompareTo()), the new node should be on this node's right side.
             //          -If the current node and the new node have the same key, just update this node's value with the new node's value
-            
+            if (node.Key.CompareTo(Key) == -1)
+            {
+                if (LeftChild == null)
+                {
+                    LeftChild = node;
+                }
+                else
+                {
+                    LeftChild.Add(node);
+                }
+
+            }
+            else if (node.Key.CompareTo(Key) == 1)
+            {
+                if (RightChild == null)
+                {
+                    RightChild = node;
+                }
+                else
+                {
+                    RightChild.Add(node);
+                }
+
+            }
+            else
+            {
+                Value = node.Value;
+            }
         }
 
         public int Count()
