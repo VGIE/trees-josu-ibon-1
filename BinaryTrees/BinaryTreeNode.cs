@@ -202,12 +202,12 @@ namespace BinaryTrees
             return LeftChild;
         }
      
-        BinaryTreeNode<TKey, TValue> nodoBorrar = this;
+        BinaryTreeNode<TKey, TValue> nodoActual = this;
         BinaryTreeNode<TKey, TValue> siguiente = RightChild;
 
         while (siguiente.LeftChild != null)
         {
-            nodoBorrar = siguiente;
+            nodoActual = siguiente;
             siguiente = siguiente.LeftChild;
         }
 
@@ -216,14 +216,14 @@ namespace BinaryTrees
         Value = siguiente.Value;
 
         
-        if (nodoBorrar == this)
+        if (nodoActual == this)
         {
         
             RightChild = siguiente.RightChild;
         }
         else
         {
-            nodoBorrar.LeftChild = siguiente.RightChild;
+            nodoActual.LeftChild = siguiente.RightChild;
         }
     }
 
