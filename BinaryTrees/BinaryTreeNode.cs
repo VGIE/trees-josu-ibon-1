@@ -201,9 +201,33 @@ namespace BinaryTrees
         {
             return LeftChild;
         }
-                return RightChild;
+     
+        BinaryTreeNode<TKey, TValue> parent = this;
+        BinaryTreeNode<TKey, TValue> siguiente = RightChild;
 
+        while (siguiente.LeftChild != null)
+        {
+            parent = siguiente;
+            siguiente = siguiente.LeftChild;
+        }
+
+       
+        Key = siguiente.Key;
+        Value = siguiente.Value;
+
+        
+        if (parent == this)
+        {
+        
+            RightChild = siguiente.RightChild;
+        }
+        else
+        {
+            parent.LeftChild = siguiente.RightChild;
+        }
     }
+
+
 
     return this;
 }
